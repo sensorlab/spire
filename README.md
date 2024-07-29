@@ -22,4 +22,6 @@ and 50\% less floating-point operations per second (FLOPS) compared to an SotA A
 
 # Self-supervised clustering-enabled spectrum sensing workflow
 
+![workflow](workflow.png)
+
 (The code for the project will be uploaded soon.)
