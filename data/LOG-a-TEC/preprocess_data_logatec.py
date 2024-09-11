@@ -3,13 +3,11 @@ import glob
 import numpy as np
 from torch.utils.data import Dataset
 import sys
+import json
+import datetime
 
-START_SAMPLE = 100
-NUM_SAMPLES = 2048
-R_F = 5_900_000_000
-fftsize = 1024
-
-filepath, savepath = sys.argv
+filepath = sys.argv[1] # ws_traffic_20170606.json
+savepath = sys.argv[2]
 
 with open("%s" % filepath, 'r') as f:
     num_lines = 1
@@ -29,11 +27,10 @@ with open("%s" % filepath, 'r') as f:
         for i, line in enumerate(f):
             j_line = json.loads(line)
             ts = datetime.datetime.strptime(j_line["Time"], '%Y-%m-%dT%H:%M:%S.%f').timestamp()
-            t.append(ts)
-        
+            
             # use the h5py
             dset[i, :] = j_line["Measurements"]
             timestamps[i] = ts
             timeindex[i] = i
 
-        print("Done!")
+    print("Done!")

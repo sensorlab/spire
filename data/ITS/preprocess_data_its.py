@@ -12,12 +12,12 @@ fftsize = 1024
 
 #filepath = '25msps/'
 
-filepath, savepath = sys.argv
+dirpath = sys.argv[1]
+savepath = sys.argv[2]
 
-
-def load_data_dict(filepath):
+def load_data_dict(dirpath):
     '''Load data in dictionary for given filepath.'''
-    files_list = sorted(glob.glob(filepath + '*.mat'))
+    files_list = sorted(glob.glob(dirpath + '*.mat'))
     data_dict = {}
     
     for filename in files_list:
@@ -28,7 +28,7 @@ def load_data_dict(filepath):
         if tec_name=='FiveG':
             tec_name = 'Five_G'
         if tec_name=='noise':
-            tec_name = 'Noise'ве
+            tec_name = 'Noise'
         if tec_name=='wifi':
             tec_name='WiFi'
         print('Loading ' + tec_name + ' data.')
@@ -79,6 +79,7 @@ def get_subsamples_fft(data, fftsize):
     subsamples_fft = np.array(subsamples_fft)
     return subsamples_fft
 
+data_dict = load_data_dict(dirpath)
 
 with h5py.File(savepath, 'a') as f:
 
@@ -105,3 +106,4 @@ with h5py.File(savepath, 'a') as f:
 
                 f['labels'].resize((f['labels'].shape[0] + labels.shape[0]), axis=0)
                 f['labels'][-labels.shape[0]:] = labels
+print('Done')
