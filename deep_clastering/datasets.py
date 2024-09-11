@@ -25,16 +25,12 @@ class LabeledGhentDataset(Dataset):
         self.RSS_MIN = GHENT_DATASET_RSS_MIN
         self.RSS_MAX = GHENT_DATASET_RSS_MAX
         self.labels_dict = {'dvbt':0, 'lte':1, 'wf':2}
+        self.labels = labels
         
         with h5py.File(self.dataset_path, mode="r", swmr=True) as fp:
             #Obtain max time range and max bandwidth range
             self.data_length = fp['rss'].shape[0]
             self.data_width = fp['rss'].shape[1]
-                
-        if not labels is None:
-            self.labels = labels
-        else:
-            self.labels = np.zeros(self.data_length, dtype=int)
     
     def __len__(self):
         if self.limit:
@@ -54,7 +50,10 @@ class LabeledGhentDataset(Dataset):
         if self.transform:
             sample = self.transform(sample, dtype=torch.float)
             sample = sample.unsqueeze(0)
-            
+        
+        if not self.labels is None:
+            return sample, self.labels[idx]
+        
         return sample, sample_label
 
 class LogatecDataset(Dataset):
@@ -114,17 +113,13 @@ class LabeledITSDataset(Dataset):
         self.RSS_MIN = ITS_DATASET_RSS_MIN
         self.RSS_MAX = ITS_DATASET_RSS_MAX
         self.labels_dict = {'CV2X': 0, 'Five_G': 1, 'ITSG5': 2, 'LTE': 3, 'WiFi': 4, 'Noise': 5}
+        self.labels = labels
         
         with h5py.File(self.dataset_path, mode="r", swmr=True) as fp:
             #Obtain max time range and max bandwidth range
             self.data_length = fp['fft'].shape[0]
             self.data_width = fp['fft'].shape[1]
             self.gt_labels = fp['labels']
-                
-        if labels:
-            self.labels = labels
-        else:
-            self.labels = np.zeros(self.data_length, dtype=int)
     
     def __len__(self):
         if self.limit:
@@ -144,5 +139,8 @@ class LabeledITSDataset(Dataset):
         if self.transform:
             sample = self.transform(sample, dtype=torch.float)
             sample = sample.unsqueeze(0)
+
+        if not self.labels is None:
+            return sample, self.labels[idx]
             
         return sample, sample_label
