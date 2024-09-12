@@ -24,4 +24,29 @@ and 50\% less floating-point operations per second (FLOPS) compared to an SotA A
 
 ![workflow](workflow.png)
 
-(The code for the project will be uploaded soon.)
+To run the expreiments:
+
+1) Install dependencies:
+     ```console
+     pip install -r requriments.txt
+     pip install -q pyclustertend==1.8.2 --ignore-requires-python --no-deps
+     ```
+
+3) Download the datasets to corresponding folders in data/
+     ```console
+    data/ITS: https://ieee-dataport.org/documents/dataset-iq-samples-lte-5g-nr-wi-fi-its-g5-and-c-v2x-pc5
+    data/TCD: https://github.com/JaronFontaine/Technology-Recognition-dataset-of-real-life-LTE-WiFi-and-DVB-T
+    data/LOG-a-TEC: https://log-a-tec.eu/
+    ```
+   
+5) Do preproccesing of data:
+     ```console
+    data/ITS: python preprocess_data_its.py <dir_of_data>/ <your_dataset_name>.h5
+    data/TCD: python preprocess_data_ghent.py <dir_of_data>/ <your_dataset_name>.h5
+    data/TCD: python preprocess_data_logatec.py <filepath>.json <your_dataset_name>.h5
+    ```
+
+7) Run the notebooks
+   
+     
+
