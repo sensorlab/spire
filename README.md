@@ -65,5 +65,6 @@ If you use this pipeline in your research, citation of the following paper would
   doi={10.1109/OJCOMS.2024.3436601}}
 ```
    
-     
+# Funding
+This work was supported by the European Commission NANCY project (No. 101096456) and Slovenian Research Agency (P2-0016).
 
