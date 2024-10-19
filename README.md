@@ -1,6 +1,6 @@
 # SPIRE **S**elf-su**P**erv**I**sed Spect**R**um Cluste**R**ing
 
-Code for the eperimental work as part of the paper: Spectrum Sensing with Deep Clustering: Label-Free Radio Access Technology Recognition.
+Code for the eperimental work as part of the paper: [Spectrum Sensing with Deep Clustering: Label-Free Radio Access Technology Recognition, IEEE Open Journal of the Communications Society, 2024](https://ieeexplore.ieee.org/document/10623390).
 
 Given the dynamic and complex nature of contemporary
 wireless environments, characterized by a wide variety of
@@ -47,6 +47,23 @@ To run the expreiments:
     ```
 
 7) Run the notebooks
+
+# Citation
+
+If you use this pipeline in your research, citation of the following paper would be greatly appreciated:
+
+```
+@ARTICLE{milosheski2024,
+  author={Milosheski, Ljupcho and Mohorčič, Mihael and Fortuna, Carolina},
+  journal={IEEE Open Journal of the Communications Society}, 
+  title={Spectrum Sensing With Deep Clustering: Label-Free Radio Access Technology Recognition}, 
+  year={2024},
+  volume={5},
+  number={},
+  pages={4746-4763},
+  keywords={Sensors;Data models;Representation learning;Feature extraction;Adaptation models;Task analysis;Radio frequency;Analysis;clustering;machine learning;monitoring;self-supervised;radio frequency spectrum},
+  doi={10.1109/OJCOMS.2024.3436601}}
+```
    
      
 
